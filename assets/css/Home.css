@@ -6,11 +6,6 @@
     font-family: 'Poppins', sans-serif;
 }
 
-/* body{
-    width: 100vw;
-    height: 100vh;
-} */
-
 header{
     display: flex;
     justify-content: space-between;
@@ -69,6 +64,14 @@ nav li a{
 nav li a:hover{
     text-decoration: underline;
     text-shadow: 1;
+}
+
+.menu {
+    display: none;
+}
+
+.close {
+    display: none;
 }
 
 main{
@@ -321,7 +324,7 @@ footer{
 }
 
 .footer-container{
-    width: 1100px;
+    width: 80%;
     height: 350px;
     margin: auto;
 }
@@ -370,8 +373,7 @@ footer h3{
 
 hr{
     width: 80%;
-    margin-left: 150px;
-    color: rgb(239, 236, 236);
+    margin: auto;
 }
 
 #hr1{
@@ -380,14 +382,9 @@ hr{
 
 .privacy{
     display: flex;
-}
-
-.rights{
-    margin-left: 180px;
-}
-
-.email{
-    margin-left: 750px;
+    width: 80%;
+    margin: auto;
+    justify-content: space-between;
 }
 
 .footer-col img{
@@ -452,14 +449,6 @@ hr{
     text-align: center;
     font-size: 35px;
     margin-bottom: 30px;
-}
-
-.menu {
-    display: none;
-}
-
-.close {
-    display: none;
 }
 
 @media only screen and (max-width: 500px) {
