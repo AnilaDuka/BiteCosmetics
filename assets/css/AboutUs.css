@@ -341,14 +341,6 @@ hr{
     width: 100%;
 }
 
-.menu {
-    display: none;
-}
-
-.close {
-    display: none;
-}
-
 @media only screen and (max-width: 500px) {
 
     header {
