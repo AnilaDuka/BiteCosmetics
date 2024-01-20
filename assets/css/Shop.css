@@ -14,6 +14,7 @@ header{
     align-items: center;
     position: sticky;
     top: 0;
+    z-index: 1000;
     background-color: white;
     height: 70px;
     padding: 0% 1%;
@@ -289,4 +290,348 @@ hr{
 
 .iframe iframe{
     width: 100%;
+}
+
+@media screen and (min-width: 600px) and (max-width: 1000px) {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    }
+
+    .menu {
+    display: block;
+    }
+    
+    nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 1em;
+    }
+
+    #home ul {
+        width: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    header svg {
+    width: 2.5em;
+    cursor: pointer;
+    }
+
+    nav {
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    width: 50%;
+    z-index: 1000;
+    transform: translateX(180%);
+    }
+
+    nav li, h2 {
+        margin-top: 0px;
+    }
+
+    nav ul {
+    text-align: center;
+    color: black;
+    padding: .75em 2em;
+    display: block;
+    }
+
+    nav li {
+        margin: 20px;
+    }
+
+    .close {
+    margin: 0 auto;
+    display: block;
+    width: 2.5em;
+    }
+
+    h2 {
+        text-align: center;
+        width: auto;
+    }
+
+    .open-nav {
+    background-color: white;
+    transform: translateX(0);
+    }
+
+    #log {
+        position: relative;
+        margin: 0;
+        padding: 0;
+    }
+
+    body{
+        overflow-x: hidden;
+    }
+
+    .burger{
+        display: flex;
+        gap: 5%;
+        align-items: center;
+    }
+
+    .logobite {
+        width: 100%;
+    }
+
+    /*------page------ */
+
+    .categories {
+        width: 100%;
+    }
+
+    .products {
+        width: 42%;
+    }
+
+    /*-----footer------*/
+
+    .footer-col {
+        width: 30%;
+    }
+
+    .socials {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .fo-pic {
+        display: flex;
+        margin: 0px;
+        gap: 5%;
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    }
+
+    .menu {
+    display: block;
+    }
+    
+    nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 1em;
+    }
+
+    #home ul {
+        width: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    header svg {
+    width: 2.5em;
+    cursor: pointer;
+    }
+
+    nav {
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    width: 70%;
+    z-index: 1000;
+    transform: translateX(180%);
+    }
+
+    nav li, h2 {
+        margin-top: 0px;
+    }
+
+    nav ul {
+    text-align: center;
+    color: black;
+    padding: .75em 2em;
+    display: block;
+    }
+
+    nav li {
+        margin: 20px;
+    }
+
+    .close {
+    margin: 0 auto;
+    display: block;
+    width: 2.5em;
+    }
+
+    h2 {
+        text-align: center;
+        width: auto;
+    }
+
+    .open-nav {
+    background-color: white;
+    transform: translateX(0);
+    }
+
+    #log {
+        position: relative;
+        margin: 0;
+        padding: 0;
+    }
+
+    body{
+        overflow-x: hidden;
+    }
+
+    .burger{
+        display: flex;
+        gap: 5%;
+        align-items: center;
+    }
+
+    .logobite {
+        width: 100%;
+    }
+
+        /*------footer-------*/
+
+        footer {
+            margin: 0;
+            padding: 0;
+            display: block;
+            height: fit-content;
+        }
+        
+        .footer-container{
+            width: 100%;
+            height: fit-content;
+        }
+        
+        .footer-col{
+            font-size: 8px;
+        }
+        
+        .footer-col ul li a{
+            font-size: 13px;
+        }
+        
+        .privacy{
+            display: block;
+        }
+        
+        
+        hr{
+            margin-left: 40px;
+            width: 80%;
+        }
+        
+        footer h3{
+            padding-bottom: 15px;
+        }
+        
+        .row{
+            margin-left: 0px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .footer-col{
+            margin-bottom: 0;
+            padding-bottom: 0;
+            height: fit-content;
+            width: 90%;
+            /* width: fit-content; */
+        }
+        
+        .socials {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .socials img {
+            width: 20%;
+        }
+        .fo-pic {
+            width: 90%;
+            display: flex;
+            justify-content: center;
+            margin: 0px;
+            gap: 15%;
+            margin-bottom: 5%;
+        }
+        
+        .fa-brands{
+            font-size: 13px;
+        }
+        
+        .fo-pic img {
+            width: 17%;
+            padding: 0px;
+        }
+        
+        
+        .email p{
+            display: none;
+        }
+       /* ------------------------ */
+       .product-categories {
+        display: none;
+    }
+    
+    .entrance{
+        height: fit-content;
+    }
+    
+    .entrance h1{
+        font-size: 25px;
+    }
+    .entrance p{
+        font-size: 15px;
+    }
+    
+    .orientation {
+        display: none;
+    }
+    
+    .category-name{
+        font-size: 22px;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .categories{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        flex-basis: 33.33333%;
+        gap: 15px;
+        width: 100%;
+    }
+    
+    .products {
+        width: 70%;
+        height: 400px;
+    }
 }
