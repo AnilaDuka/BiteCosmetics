@@ -111,7 +111,6 @@ main{
 
 #gift{
     margin-top: 40px;
-    margin-left: 60px;
     background-color: black;
     color: white;
     border-radius: 50px;
@@ -460,7 +459,76 @@ hr{
     margin-bottom: 30px;
 }
 
-@media screen and (min-width: 600px) and (max-width: 1000px) {
+@media screen and (min-width: 1100px) and (max-width: 1400px) {
+    .navbar {
+        width: 35%;
+    }
+
+    /*------footer----*/
+    
+    .fo-pic {
+        margin-left: 0%;
+    }
+
+    /*------page-----*/
+
+    .titlebutton p {
+        font-size: 52px;
+    }
+
+    .products{
+        width: 90%;
+        margin: auto;
+        margin-top: 5%;
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
+    
+    .bar {
+        margin-bottom: 5%;
+    }
+
+    .second-container {
+        width: 90%;
+        margin: auto;
+        gap: 5%;
+        margin-bottom: 10%;
+    }
+
+    .heart {
+        width: 90%;
+        margin: auto;
+        margin-top: 4%;
+    }
+
+    .heart h1{
+        font-size: 35px;
+    }
+
+    .heart p {
+        font-size: 19px;
+    }
+
+    .slider {
+        width: 90%;
+        margin-left: 0;
+    }
+
+    .section {
+        width: 85%;
+    }
+
+    .tablets {
+        font-size: 30px;
+    }
+
+    .whitening-pic {
+        height: 90%;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 1100px) {
     * {
         margin: 0;
         padding: 0;
