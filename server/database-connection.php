@@ -1,22 +1,24 @@
 <?php
 
-class DatabaseConnection{
-    private $server="localhost";
-    private $username="root";
-    private $password="";
-    private $database="bite";
+class DatabaseConnection {
+    private $conn;
 
-    public function startConnection(){
-        if(!$conn = mysqli_connect($this->server,
-        $this->username, $this->password,
-        $this->database)){
-            echo "Error";
-            return null;
-        } else {
-            echo "Success";
-            return $conn;
+    public function __construct($server = "localhost", $username = "root", $password = "", $database = "testdb") {
+        $this->conn = new mysqli($server, $username, $password, $database);
+
+        if ($this->conn->connect_error) {
+            die("Connection failed: " . $this->conn->connect_error);
         }
+
+        echo "Connected successfully";
+    }
+
+    public function getConnection() {
+        return $this->conn;
     }
 }
+
+$database = new DatabaseConnection();
+$conn = $database->getConnection();
 
 ?>
