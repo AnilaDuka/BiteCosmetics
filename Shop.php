@@ -1,3 +1,7 @@
+<?php
+include('server/get_products.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -69,141 +73,71 @@
         </div>
     </section>
 
-    <section class="porducts-field">
-        <div class="orientation" id="oral-care-name"></div>
-        <p class="category-name">Oral Care</p>
-        <div class="oral-care categories">
-            <div class="products" id="toothpaste">
-                <img src="assets/images/oral-c1.jpg" alt="">
-                <p class="prod-name">Toothpaste Bits</p>
-                <p class="prod-desc">Fresh Mint with Fluoride</p>
-                <p class="price">$32</p>
+    <section class="products-field">
+            <!-- Oral Care Products -->
+            <div class="orientation" id="oral-care-name"></div>
+            <p class="category-name">Oral Care</p>
+            <div class="oral-care categories" id="toothpaste">
+                <?php foreach ($productsOralCare as $row) { ?>
+                    <div class="products">
+                        <a href="<?php echo "single-product.php?product_Id=". $row['product_Id']; ?>">
+                            <img src="assets/images/<?php echo $row['product_image']; ?>" alt="">
+                        </a>
+                        <p class="prod-name"><?php echo $row['product_name']; ?></p>
+                        <p class="prod-desc"><?php echo $row['product_description_short']; ?></p>
+                        <p class="price">$<?php echo $row['product_price']; ?></p>
+                    </div>
+                <?php } ?>
             </div>
-            <div class="products">
-                <img src="assets/images/oral-c2.jpg" alt="">
-                <p class="prod-name">Whitening Gel</p>
-                <p class="prod-desc">Teeth Whitening Kit</p>
-                <p class="price">$20</p>
-            </div>
-            <div class="products">
-                <img src="assets/images/oral-c3.jpg" alt="">
-                <p class="prod-name">Mouthwash Bits</p>
-                <p class="prod-desc">Fresh Mint</p>
-                <p class="price">$20</p>
-            </div>
-            <div class="products">
-                <img src="assets/images/oral-c4.jpg" alt="">
-                <p class="prod-name">Bamboo Toothbrush</p>
-                <p class="prod-desc">Toothbrush 2-Pack</p>
-                <p class="price">$12</p>
-            </div>
-            <div class="products">
-                <img src="assets/images/oral-c5.jpg" alt="">
-                <p class="prod-name">Dental Floss</p>
-                <p class="prod-desc">Floss Two-Pack</p>
-                <p class="price">$12</p>
-            </div>
-        </div>
 
-        <div class="orientation" id="personal-care-name"></div>
-        <p class="category-name">Personal Care</p>
-        <div class="personal-care categories">
-            <div class="products">
-                <img src="assets/images/personal-c1.jpg" alt="">
-                <p class="prod-name">Deodorant</p>
-                <p class="prod-desc">Neroli</p>
-                <p class="price">$32</p>
+            <!-- Personal Care Products -->
+            <div class="orientation" id="personal-care-name"></div>
+            <p class="category-name">Personal Care</p>
+            <div class="personal-care categories" id="balm">
+                <?php foreach ($productsPersonalCare as $row) { ?>
+                    <div class="products">
+                        <a href="<?php echo "single-product.php?product_Id=". $row['product_Id']; ?>">
+                            <img src="assets/images/<?php echo $row['product_image']; ?>" alt="">
+                        </a>
+                        <p class="prod-name"><?php echo $row['product_name']; ?></p>
+                        <p class="prod-desc"><?php echo $row['product_description_short']; ?></p>
+                        <p class="price">$<?php echo $row['product_price']; ?></p>
+                    </div>
+                <?php } ?>
             </div>
-            <div class="products" id="balm">
-                <img src="assets/images/personal-c2.jpg" alt="">
-                <p class="prod-name">Body Balm</p>
-                <p class="prod-desc">Solid Moisturizer</p>
-                <p class="price">$28</p>
-            </div>
-            <div class="products">
-                <img src="assets/images/personal-c3.jpg" alt="">
-                <p class="prod-name">Carbon Capture Cleanser</p>
-                <p class="prod-desc">Body Bar</p>
-                <p class="price">$12</p>
-            </div>
-            <div class="products">
-                <img src="assets/images/personal-c4.jpg" alt="">
-                <p class="prod-name">Soap Tray</p>
-                <p class="prod-desc"></p>
-                <p class="price">$14</p>
-            </div>
-            <div class="products">
-                <img src="assets/images/personal-c5.jpg" alt="">
-                <p class="prod-name">Soap Pouch</p>
-                <p class="prod-desc"></p>
-                <p class="price">$6</p>
-            </div>
-        </div>
 
-        <div class="orientation" id="bundles-name"></div>
-        <p class="category-name">Bundles</p>
-        <div class="bundles categories">
-            <div class="products">
-                <img src="assets/images/bundle-1.jpg" alt="">
-                <p class="prod-name">Daily Habits Kit</p>
-                <p class="prod-desc">5-Piece Oral Care Kit</p>
-                <p class="price">$62</p>
+            <!-- Bundles Products -->
+            <div class="orientation" id="bundles-name"></div>
+            <p class="category-name">Bundles</p>
+            <div class="bundles categories">
+                <?php foreach ($productsBundles as $row) { ?>
+                    <div class="products">
+                        <a href="<?php echo "single-product.php?product_Id=". $row['product_Id']; ?>">
+                            <img src="assets/images/<?php echo $row['product_image']; ?>" alt="">
+                        </a>
+                        <p class="prod-name"><?php echo $row['product_name']; ?></p>
+                        <p class="prod-desc"><?php echo $row['product_description_short']; ?></p>
+                        <p class="price">$<?php echo $row['product_price']; ?></p>
+                    </div>
+                <?php } ?>
             </div>
-            <div class="products">
-                <img src="assets/images/bundle-2.jpg" alt="">
-                <p class="prod-name">The Duo</p>
-                <p class="prod-desc">Toothpaste Bits</p>
-                <p class="price">$20</p>
-            </div>
-            <div class="products">
-                <img src="assets/images/bundle-3.jpg" alt="">
-                <p class="prod-name">The Starter Kit</p>
-                <p class="prod-desc">Holiday Gift Set</p>
-                <p class="price">$40</p>
-            </div>
-        </div>
 
-        <div class="orientation" id="gift-sets-name"></div>
-        <p class="category-name">Gift Sets</p>
-        <div class="gift-sets categories">
-            <div class="products">
-                <img src="assets/images/gift-1.jpg" alt="">
-                <p class="prod-name">Best Sellers</p>
-                <p class="prod-desc">Holiday Gift Set</p>
-                <p class="price">$70</p>
+            <!-- Gift Sets Products -->
+            <div class="orientation" id="gift-sets-name"></div>
+            <p class="category-name">Gift Sets</p>
+            <div class="gift-sets categories">
+                <?php foreach ($productsGiftSets as $row) { ?>
+                    <div class="products">
+                        <a href="<?php echo "single-product.php?product_Id=". $row['product_Id']; ?>">
+                            <img src="assets/images/<?php echo $row['product_image']; ?>" alt="">
+                        </a>
+                        <p class="prod-name"><?php echo $row['product_name']; ?></p>
+                        <p class="prod-desc"><?php echo $row['product_description_short']; ?></p>
+                        <p class="price">$<?php echo $row['product_price']; ?></p>
+                    </div>
+                <?php } ?>
             </div>
-            <div class="products">
-                <img src="assets/images/gift-2.jpg" alt="">
-                <p class="prod-name">Plastic-Free Routine</p>
-                <p class="prod-desc">Holiday Gift Set</p>
-                <p class="price">$65</p>
-            </div>
-            <div class="products">
-                <img src="assets/images/gift-3.jpg" alt="">
-                <p class="prod-name">The Starter Kit</p>
-                <p class="prod-desc">Holiday Gift Set</p>
-                <p class="price">$40</p>
-            </div>
-            <div class="products">
-                <img src="assets/images/gift-4.jpg" alt="">
-                <p class="prod-name">The Stocking Stuffer</p>
-                <p class="prod-desc">Holiday Gift Set</p>
-                <p class="price">$40</p>
-            </div>
-            <div class="products">
-                <img src="assets/images/gift-5.jpg" alt="">
-                <p class="prod-name">Body Bundle</p>
-                <p class="prod-desc">Holiday Gift Set</p>
-                <p class="price">$70</p>
-            </div>
-            <div class="products">
-                <img src="assets/images/gift-6.jpg" alt="">
-                <p class="prod-name">Gift Bite</p>
-                <p class="prod-desc">Digital Gift Card</p>
-                <p class="price">$25</p>
-            </div>
-        </div>
-    </section>
+        </section>
 </div>
 
     <footer>
