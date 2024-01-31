@@ -3,14 +3,14 @@
 class DatabaseConnection {
     private $conn;
 
-    public function __construct($server = "localhost", $username = "root", $password = "", $database = "testdb") {
+    public function __construct($server = "localhost", $username = "root", $password = "", $database = "bitecosmetics") {
         $this->conn = new mysqli($server, $username, $password, $database);
 
         if ($this->conn->connect_error) {
             die("Connection failed: " . $this->conn->connect_error);
         }
 
-        echo "Connected successfully";
+        echo "<script>console.log('Connected Successfully');</script>";
     }
 
     public function getConnection() {
