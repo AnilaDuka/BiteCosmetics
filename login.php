@@ -31,7 +31,7 @@
             </a>
         </div>
         <div class="burger">
-            <a id="log" href="login.html">LogIn/Register</a>
+            <a id="log" href="login.php">LogIn/Register</a>
             <svg class="menu" viewBox="0 0 100 80" width="40" height="40">
                 <rect width="100" height="20"></rect>
                 <rect y="30" width="100" height="20"></rect>
@@ -50,7 +50,7 @@
             <br><br>
             <input type="submit" value="Log in" class="cred-input" id="submit">
             </form>
-            <p>Don't have an account? <a href="Register.html">Click here</a> to register.</p>
+            <p>Don't have an account? <a href="register.php">Click here</a> to register.</p>
         </div>
     </div>
 

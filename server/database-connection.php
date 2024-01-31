@@ -10,15 +10,15 @@ class DatabaseConnection {
             die("Connection failed: " . $this->conn->connect_error);
         }
 
-        echo "<script>console.log('Connected Successfully');</script>";
+        // echo "<script>console.log('Connected Successfully');</script>";
     }
 
-    public function getConnection() {
+    public function startConnection() {
         return $this->conn;
     }
 }
 
 $database = new DatabaseConnection();
-$conn = $database->getConnection();
+$conn = $database->startConnection();
 
 ?>
