@@ -1,6 +1,6 @@
 <?php
 
-include_once 'server/database-connection.php';
+include_once 'database-connection.php';
 
 class UserRepository
 {
@@ -19,8 +19,9 @@ class UserRepository
         $name = $user->getName();
         $email = $user->getEmail();
         $password = $user->getPassword();
+        $role = 'user';
     
-        $sql = "INSERT INTO user (user_id, name, email, password) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO user (user_id, name, email, password, role) VALUES (?, ?, ?, ?, ?)";
     
         $statement = $conn->prepare($sql);
     
@@ -28,7 +29,7 @@ class UserRepository
             die('Error during prepare: ' . $conn->error);
         }
     
-        $statement->bind_param("ssss", $id, $name, $email, $password);
+        $statement->bind_param("sssss", $id, $name, $email, $password, $role);
     
         if ($statement->execute()) {
             echo "<script> alert('User has been inserted successfully!'); </script>";
@@ -37,6 +38,19 @@ class UserRepository
         }
     }
     
+    public function updateUserRole($user_id, $role)
+    {
+        $sql = "UPDATE user SET role=? WHERE user_id=?";
+
+        $statement = $this->connection->prepare($sql);
+        $statement->bind_param("ss", $role, $user_id);
+
+        if ($statement->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public function getAllUsers()
     {
@@ -92,19 +106,5 @@ class UserRepository
         }
     }
 }
-
-// Example usage:
-
-// $userRepo = new UserRepository();
-
-// $user = new User(); // Assuming you have a User class with appropriate getters and setters
-// $user->setId('1111');
-// $user->setName('SSS');
-// $user->setSurname('SSS');
-// $user->setEmail('SSS');
-// $user->setUsername('SSS');
-// $user->setPassword('SSS');
-
-// $userRepo->updateUser($user->getId(), $user->getName(), $user->getSurname(), $user->getEmail(), $user->getUsername(), $user->getPassword());
 
 ?>

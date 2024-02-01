@@ -12,13 +12,10 @@ if(isset($_POST['registerBtn'])){
         $password = $_POST['password'];
         $id = $name . rand(100, 999);
 
-        // Creating a new User object
         $user = new User($id, $name, $email, $password);
 
-        // Creating a new UserRepository object
         $userRepository = new UserRepository();
 
-        // Inserting the user into the database
         $userRepository->insertUser($user);
     }
 }
