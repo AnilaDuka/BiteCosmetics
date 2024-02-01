@@ -68,37 +68,42 @@ class UserRepository
 
     public function getUserById($user_id)
     {
-        $sql = "SELECT * FROM user WHERE id=?";
-
+        $sql = "SELECT * FROM user WHERE user_id=?";
+        
         $statement = $this->connection->prepare($sql);
-        $statement->bind_param("s", $user_id);
+        $statement->bind_param("i", $user_id);
         $statement->execute();
+    
+        if ($statement->error) {
+            die('Error during query execution: ' . $statement->error);
+        }
+    
         $user = $statement->get_result()->fetch_assoc();
-
+    
         return $user;
     }
 
     public function updateUser($user_id, $name, $email, $password)
-    {
-        $sql = "UPDATE user SET name=?, email=?, password=? WHERE id=?";
+{
+    $sql = "UPDATE user SET name=?, email=?, password=? WHERE user_id=?";
 
-        $statement = $this->connection->prepare($sql);
-        $statement->bind_param("ssssss", $name, $email, $password, $user_id);
+    $statement = $this->connection->prepare($sql);
+    $statement->bind_param("sssi", $name, $email, $password, $user_id);
 
-        if ($statement->execute()) {
-            return true;
-        } else {
-            return false;
-        }
+    if ($statement->execute()) {
+        return true;
+    } else {
+        return false;
     }
+}
 
     public function deleteUser($user_id)
     {
-        $sql = "DELETE FROM user WHERE id=?";
-
+        $sql = "DELETE FROM user WHERE user_id=?";
+    
         $statement = $this->connection->prepare($sql);
-        $statement->bind_param("s", $user_id);
-
+        $statement->bind_param("i", $user_id);
+    
         if ($statement->execute()) {
             return true;
         } else {

@@ -27,7 +27,7 @@ $users = $userRepository->getAllUsers();
             <th>Name</th>
             <th>Email</th>
             <th>Role</th>
-            <th>Actions</th>
+            <th colspan="3">Actions</th>
         </tr>
         <?php foreach ($users as $user): ?>
             <tr>
@@ -45,6 +45,8 @@ $users = $userRepository->getAllUsers();
                         </select>
                         <input type="submit" name="changeRoleBtn" value="Change Role">
                     </form>
+                    <td><a href="edit.php?id=<?= $user['user_id']; ?>">Edit</a></td>
+                    <td><a href="delete.php?id=<?= $user['user_id']; ?>">Delete</a></td>
                 </td>
             </tr>
         <?php endforeach; ?>
@@ -52,3 +54,4 @@ $users = $userRepository->getAllUsers();
 
 </body>
 </html>
+
