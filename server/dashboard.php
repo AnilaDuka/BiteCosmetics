@@ -1,4 +1,5 @@
 <?php
+include_once 'database-connection.php';
 session_start();
 
 if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
@@ -15,11 +16,31 @@ include_once 'userRepo.php';
 
 $userRepository = new UserRepository();
 
+$totalUsers = $userRepository->getTotalUsers();
+
+
 if (isset($_POST['changeRoleBtn'])) {
     $userRepository->updateUserRole($_POST['user_id'], $_POST['new_role']);
 }
 
 $users = $userRepository->getAllUsers();
+
+$totalAdmins = 0;
+$totalUsers = 0;
+
+foreach ($users as $user) {
+    if ($user['role'] === 'admin') {
+        $totalAdmins++;
+    } elseif ($user['role'] === 'user') {
+        $totalUsers++;
+    }
+}
+
+include_once 'contactRepository.php';
+
+$contactRepository = new ContactRepository($conn);
+
+$contactSubmissions = $contactRepository->getAllSubmissions();
 ?>
 
 <!DOCTYPE html>
@@ -27,6 +48,7 @@ $users = $userRepository->getAllUsers();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
     <title>Dashboard</title>
 </head>
 <body>
@@ -43,12 +65,12 @@ $users = $userRepository->getAllUsers();
                     <li><a href="../Shop.php">Shop</a></li>
                     <li><a href="../AboutUs.php">About Us</a></li>
                     <li><a href="../contact.php">Contact Us</a></li>
-                </ul>
                 <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] && $_SESSION['role'] === 'admin'): ?>
                     <div class="dashboard-link">
-                        <a href="dashboard.php">Dashboard</a>
+                        <li><a href="dashboard.php">Dashboard</a></li>
                     </div>
                 <?php endif; ?>
+                </ul>
             </nav>
         </div>
         <div class="logobite">
@@ -73,36 +95,74 @@ $users = $userRepository->getAllUsers();
             </svg>
         </div>
     </header>
-    <h2>Dashboard</h2>
+    <h2 id="title">Dashboard</h2>
+    <div class="welcome-message">
+    <?php
+    if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
+        echo 'Welcome ' . $_SESSION['name'];
+    }
+    ?>
+</div>
+    <div class="analysis">
+        <div class="counts">
+            <h2>Users</h2>
+            <b>Number of users: <?= $totalUsers; ?></b>
+        </div>
+
+        <div class="counts">
+            <h2>Admins</h2>
+            <b>Total number of admins: <?= $totalAdmins; ?></b>
+        </div>
+    </div>
+        <table border="1" class="admintable">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th colspan="3">Actions</th>
+            </tr>
+            <?php foreach ($users as $user): ?>
+                <tr>
+                    <td><?= $user['user_id']; ?></td>
+                    <td><?= $user['name']; ?></td>
+                    <td><?= $user['email']; ?></td>
+                    <td><?= $user['role']; ?></td>
+                    <td>
+                        <form action="" method="post">
+                            <input type="hidden" name="user_id" value="<?= $user['user_id']; ?>">
+                            <label for="new_role">Change Role:</label>
+                            <select name="new_role">
+                                <option value="user">User</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                            <input type="submit" name="changeRoleBtn" value="Change Role">
+                        </form>
+                    </td>
+                    <td><a href="edit.php?id=<?= $user['user_id']; ?>">Edit</a></td>
+                    <td><a href="delete.php?id=<?= $user['user_id']; ?>">Delete</a></td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
+
+    <div class="contact-submissions">
+    <h2>Contact Form Submissions</h2>
     <table border="1">
         <tr>
-            <th>ID</th>
             <th>Name</th>
             <th>Email</th>
-            <th>Role</th>
-            <th colspan="3">Actions</th>
+            <th>Subject</th>
+            <th>Message</th>
         </tr>
-        <?php foreach ($users as $user): ?>
+        <?php foreach ($contactSubmissions as $submission): ?>
             <tr>
-                <td><?= $user['user_id']; ?></td>
-                <td><?= $user['name']; ?></td>
-                <td><?= $user['email']; ?></td>
-                <td><?= $user['role']; ?></td>
-                <td>
-                    <form action="" method="post">
-                        <input type="hidden" name="user_id" value="<?= $user['user_id']; ?>">
-                        <label for="new_role">Change Role:</label>
-                        <select name="new_role">
-                            <option value="user">User</option>
-                            <option value="admin">Admin</option>
-                        </select>
-                        <input type="submit" name="changeRoleBtn" value="Change Role">
-                    </form>
-                </td>
-                <td><a href="edit.php?id=<?= $user['user_id']; ?>">Edit</a></td>
-                <td><a href="delete.php?id=<?= $user['user_id']; ?>">Delete</a></td>
+                <td><?= $submission['name']; ?></td>
+                <td><?= $submission['email']; ?></td>
+                <td><?= $submission['subject']; ?></td>
+                <td><?= $submission['message']; ?></td>
             </tr>
         <?php endforeach; ?>
     </table>
+</div>
 </body>
 </html>

@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: white;
+    height: 70px;
+    padding: 0% 1%;
+    box-shadow: 0 4px 6px 0 rgba(181, 181, 181, 0.2), 0 4px 10px 0 rgba(185, 185, 185, 0.19);
+}
+
+.navbar{
+    width: 25%;
+}
+
+.logobite{
+    width: 20%;
+}
+
+#home ul{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    list-style: none;
+    text-decoration: none;
+}
+
+#log{
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+#bite{
+    color: black;
+    text-decoration: none;
+    font-size: 25px;
+}
+
+nav li{
+    font-size: 20px;
+}
+
+
+#log:hover {
+    text-decoration: underline;
+    text-shadow: 1;  
+}
+
+nav li a{
+    text-decoration: none;
+    color: black;
+}
+
+nav li a:hover{
+    text-decoration: underline;
+    text-shadow: 1;
+}
+
+.burger{
+    display: flex;
+}
+
+.menu {
+    display: none;
+}
+
+.close {
+    display: none;
+}
+
+/*-----------------*/
+
+.analysis {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+    margin: 3% 0%;
+
+}
+
+.counts {
+    background: black;
+    width: 15%;
+    color: white;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.admintable {
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    width: fit-content;
+    background: ghostwhite;
+}
+
+.admintable td {
+    padding: 15px;
+}
+
+#title {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-top: 3%;
+    font-size: 50px;
+}
+
+.welcome-message {
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+}
+
+.contact-submissions{
+    width: 60%;
+    margin: auto;
+    justify-content: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.contact-submissions table td{
+    padding: 15px;
+}
+
+.contact-submissions table{
+    background: ghostwhite;
+    color: black;
+}

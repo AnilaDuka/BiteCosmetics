@@ -33,12 +33,12 @@ if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
                     <li><a href="Shop.php">Shop</a></li>
                     <li><a href="AboutUs.php">About Us</a></li>
                     <li><a href="contact.php">Contact Us</a></li>
-                </ul>
                 <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] && $_SESSION['role'] === 'admin'): ?>
                     <div class="dashboard-link">
-                        <a href="server/dashboard.php">Dashboard</a>
+                    <li><a href="server/dashboard.php">Dashboard</a></li>
                     </div>
                 <?php endif; ?>
+                </ul>
             </nav>
         </div>
         <div class="logobite">

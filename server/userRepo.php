@@ -131,10 +131,23 @@ class UserRepository
         return false;
     }
 
+    public function getTotalUsers() {
+        $sql = "SELECT COUNT(*) as total FROM user";
+        $result = $this->connection->query($sql);
+    
+        if ($result) {
+            $row = $result->fetch_assoc();
+            return $row['total'];
+        }
+    
+        return 0;
+    }
+
     public function getError()
     {
         return $this->error;
     }
+    
 }
 
 

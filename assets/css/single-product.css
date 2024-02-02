@@ -1,76 +1,56 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 *{
-    font-family: 'Poppins', sans-serif;
-    padding: 0;
     margin: 0;
-    box-sizing: border-box;
-}
-
-body{
-    background-color: white;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
 }
 
 header{
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     position: sticky;
     top: 0;
+    z-index: 1000;
     background-color: white;
     height: 70px;
-    align-items: center;
+    padding: 0% 1%;
     box-shadow: 0 4px 6px 0 rgba(181, 181, 181, 0.2), 0 4px 10px 0 rgba(185, 185, 185, 0.19);
 }
 
-nav ul{
-    list-style: none;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    width: 600px;
-    align-items: center;
-    text-decoration: none;
+.navbar{
+    width: 25%;
 }
 
-.categories-nav ul a:hover{
-    text-decoration: underline;
-    text-decoration-color:  rgba(0, 0, 0, 0.58);
+.logobite{
+    width: 20%;
 }
 
 #home ul{
-    width: 450px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    list-style: none;
+    text-decoration: none;
+}
+
+#log{
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+#bite{
+    color: black;
+    text-decoration: none;
+    font-size: 25px;
 }
 
 nav li{
     font-size: 20px;
 }
 
-nav li, h2{
-    margin-top: 20px;
-}
-
-h2{
-    text-align: end;
-    width: 350px;
-    font-size: 40px;
-}
-
-#bite{
-    text-decoration: none;
-    color: black;
-}
-
-#log {
-    font-size: 20px;
-    position: absolute;
-    margin-top: 30px;
-    top: 0;
-    right: 0;
-    color: black;
-    text-decoration: none;
-    text-align: right;
-    align-self: center;
-}
 
 #log:hover {
     text-decoration: underline;
@@ -85,6 +65,18 @@ nav li a{
 nav li a:hover{
     text-decoration: underline;
     text-shadow: 1;
+}
+
+.burger{
+    display: flex;
+}
+
+.menu {
+    display: none;
+}
+
+.close {
+    display: none;
 }
 
 /*---------------------*/
