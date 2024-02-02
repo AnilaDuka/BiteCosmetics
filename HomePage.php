@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
+    header("Location: login.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,20 +29,28 @@
                         fill="black"></path>
                 </svg>
                 <ul>
-                    <li><a href="HomePage.html">Home</a></li>
-                    <li><a href="Shop.html">Shop</a></li>
-                    <li><a href="AboutUs.html">About Us</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="HomePage.php">Home</a></li>
+                    <li><a href="Shop.php">Shop</a></li>
+                    <li><a href="AboutUs.php">About Us</a></li>
+                    <li><a href="contact.php">Contact Us</a></li>
                 </ul>
             </nav>
         </div>
         <div class="logobite">
-            <a href="homepage.html" id="bite">
+            <a href="homepage.php" id="bite">
                 <h2>Bite</h2>
             </a>
         </div>
         <div class="burger">
-            <a id="log" href="Login.html">LogIn/Register</a>
+            <a id="log" href="<?php echo isset($_SESSION['logged_in']) && $_SESSION['logged_in'] ? 'server/logout.php' : 'login.php'; ?>">
+            <?php
+            if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
+                echo 'Logout (' . $_SESSION['name'] . ')';
+            } else {
+                echo 'LogIn/Register';
+            }
+            ?>
+            </a>
             <svg class="menu" viewBox="0 0 100 80" width="40" height="40">
                 <rect width="100" height="20"></rect>
                 <rect y="30" width="100" height="20"></rect>
@@ -47,7 +63,7 @@
             <div class="packages">
                 <p>The best things come in zero-waste packages.</p>
             </div>
-            <a href="Shop.html#gift-sets-name"><button id="gift">Shop Gift Sets</button></a>
+            <a href="Shop.php#gift-sets-name"><button id="gift">Shop Gift Sets</button></a>
         </div>
     </main>
 
@@ -57,31 +73,31 @@
                 <img src="assets/images/tooth.jpg" alt="img" id="img1">
                 <h5>Toothpaste Bits</h5>
                 <p>FROM $8 / MONTH</p>
-                <a href="Shop.html#toothpaste"><button class="shop">Shop Now</button></a>
+                <a href="Shop.php#toothpaste"><button class="shop">Shop Now</button></a>
             </div>
             <div class="bar">
                 <img src="assets/images/balm.jpg" alt="img" id="img2">
                 <h5>Body balm</h5>
                 <p>FROM $7 / MONTH</p>
-                <a href="Shop.html#balm"><button class="shop">Shop Now</button></a>
+                <a href="Shop.php#balm"><button class="shop">Shop Now</button></a>
             </div>
             <div class="bar">
                 <img src="assets/images/bar.jpg" alt="img" id="img3">
                 <h5>Cleansing Bar</h5>
                 <p>FROM $3 / MONTH</p>
-                <a href="Shop.html#balm"><button class="shop">Shop Now</button></a>
+                <a href="Shop.php#balm"><button class="shop">Shop Now</button></a>
             </div>
             <div class="bar">
                 <img src="assets/images/deo.jpg" alt="img" id="img4">
                 <h5>Deodorant</h5>
                 <p>FROM $8 / MONTH</p>
-                <a href="Shop.html#balm"><button class="shop">Shop Now</button></a>
+                <a href="Shop.php#balm"><button class="shop">Shop Now</button></a>
             </div>
             <div class="bar">
                 <img src="assets/images/gel.jpg" alt="img" id="img5">
                 <h5>Whitening Gel</h5>
                 <p>FROM $5 / MONTH</p>
-                <a href="Shop.html#toothpaste"><button class="shop">Shop Now</button></a>
+                <a href="Shop.php#toothpaste"><button class="shop">Shop Now</button></a>
             </div>
         </div>
     </div>
@@ -167,18 +183,18 @@
                 <div class="footer-col">
                     <h3>Shop</h3>
                     <ul>
-                        <li><a href="Shop.html#oral-care-name">Oral Care</a></li><br><br>
-                        <li><a href="Shop.html#personal-care-name">Personal Care</a></li><br><br>
-                        <li><a href="Shop.html#bundles-name">Bundles</a></li><br><br>
-                        <li><a href="Shop.html#gift-sets-name">Gift Sets</a></li><br><br>
+                        <li><a href="Shop.php#oral-care-name">Oral Care</a></li><br><br>
+                        <li><a href="Shop.php#personal-care-name">Personal Care</a></li><br><br>
+                        <li><a href="Shop.php#bundles-name">Bundles</a></li><br><br>
+                        <li><a href="Shop.php#gift-sets-name">Gift Sets</a></li><br><br>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h3>About</h3>
                     <ul>
-                        <li><a href="HomePage.html#bestsellers">Bestsellers</a></li><br><br>
-                        <li><a href="AboutUs.html#ingredients">Ingredients</a></li><br><br>
-                        <li><a href="AboutUs.html#location">Location</a></li><br><br>
+                        <li><a href="HomePage.php#bestsellers">Bestsellers</a></li><br><br>
+                        <li><a href="AboutUs.php#ingredients">Ingredients</a></li><br><br>
+                        <li><a href="AboutUs.php#location">Location</a></li><br><br>
                     </ul>
                 </div>
                 <div class="footer-col">

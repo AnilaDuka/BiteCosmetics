@@ -110,6 +110,32 @@ class UserRepository
             return false;
         }
     }
+
+    public function login($email, $password)
+    {
+        $sql = "SELECT * FROM user WHERE email = ?";
+        $statement = $this->connection->prepare($sql);
+        $statement->bind_param("s", $email);
+        $statement->execute();
+
+        $result = $statement->get_result();
+
+        if ($result->num_rows > 0) {
+            $user = $result->fetch_assoc();
+
+            if ($password == $user['password']) {
+                return $user;
+            }
+        }
+
+        return false;
+    }
+
+    public function getError()
+    {
+        return $this->error;
+    }
 }
+
 
 ?>
