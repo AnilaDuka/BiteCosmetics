@@ -164,5 +164,21 @@ $contactSubmissions = $contactRepository->getAllSubmissions();
         <?php endforeach; ?>
     </table>
 </div>
+<script src="assets/script/home.js" type="text/javascript"></script>
+    <script>
+        const menu = document.querySelector('.menu')
+        const close = document.querySelector('.close')
+        const nav = document.querySelector('#home')
+
+        menu.addEventListener('click', () => {
+            nav.classList.add('open-nav');
+            menu.style.display = 'none';
+        })
+
+        close.addEventListener('click', () => {
+            nav.classList.remove('open-nav');
+            menu.style.display = 'block';
+        })
+    </script>
 </body>
 </html>

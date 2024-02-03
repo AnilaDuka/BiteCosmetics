@@ -292,6 +292,12 @@ hr{
     width: 100%;
 }
 
+@media screen and (min-width: 1000px) and (max-width: 1800px) {
+    .navbar{
+        width: 40% !important;
+    }
+}
+
 @media screen and (min-width: 1100px) and (max-width: 1400px) {
     .navbar {
         width: 35%;
@@ -402,6 +408,8 @@ hr{
         display: flex;
         gap: 5%;
         align-items: center;
+        width: 60%;
+        justify-content: flex-end;
     }
 
     .logobite {
@@ -433,6 +441,7 @@ hr{
         display: flex;
         margin: 0px;
         gap: 5%;
+        width: 200px;
     }
 
 }
@@ -527,10 +536,12 @@ hr{
         display: flex;
         gap: 5%;
         align-items: center;
+        justify-content: flex-end;
+        width: 100%;
     }
 
     .logobite {
-        width: 100%;
+        width: 35%;
     }
 
         /*------footer-------*/
