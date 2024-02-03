@@ -228,6 +228,28 @@ hr{
     display: none;
 }
 
+/*-----for admin-----*/
+
+.options {
+    margin-top: 5%;
+    display: flex;
+    gap: 1%;
+}
+
+.options a {
+    padding: 10px;
+    width: 80px;
+    height: 30px;
+    text-decoration: none;
+    color: white;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    font-size: 18px;
+}
+
 @media only screen and (max-width: 500px) {
 
     * {

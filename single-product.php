@@ -5,10 +5,25 @@ if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
     header("Location: login.php");
     exit();
 }
-?>
-<?php
 
     include('server/database-connection.php');
+
+    $is_admin = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] && $_SESSION['role'] === 'admin';
+
+if ($is_admin) {
+    if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['product_Id'])) {
+        $product_id = $_GET['product_Id'];
+        $stmt = $conn->prepare("DELETE FROM products WHERE product_Id = ?");
+        $stmt->bind_param("i", $product_id);
+        $stmt->execute();
+        header("Location: shop.php");
+        exit();
+    }
+    if (isset($_GET['action']) && $_GET['action'] === 'edit' && isset($_GET['product_Id'])) {
+        include('server/edit-product.php');
+        exit();
+    }
+}
 
     if(isset($_GET['product_Id'])){
 
@@ -100,6 +115,13 @@ if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
                 <p> <?php echo $row['product_description_long']; ?></p>
                 <p>$<?php echo $row['product_price']; ?></p>
                 <button>Buy product</button>
+                <div class="options">
+                <?php if ($is_admin) { ?>
+                    <a href="single-product.php?action=edit&product_Id=<?php echo $row['product_Id']; ?>">Edit</a>
+                    <a href="single-product.php?action=delete&product_Id=<?php echo $row['product_Id']; ?>"
+                        onclick="return confirm('Are you sure you want to delete this product?')">Delete</a>
+                <?php } ?>
+                </div>
             </div>
         </div>
 

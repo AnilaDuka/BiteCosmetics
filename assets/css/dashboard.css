@@ -6,6 +6,10 @@
     font-family: 'Poppins', sans-serif;
 }
 
+body{
+    overflow-x: hidden;
+}
+
 
 header{
     display: flex;
@@ -82,66 +86,89 @@ nav li a:hover{
 
 /*-----------------*/
 
-.analysis {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 5%;
-    margin: 3% 0%;
 
+.welcome-message {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    font-size: 23px;
+    margin: 1% 2%;
+}
+
+#title {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    font-size: 42px;
+    margin: 2%;
+}
+
+.analysis {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 20px 0;
 }
 
 .counts {
-    background: black;
-    width: 15%;
-    color: white;
-    height: 200px;
+    text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: black;
+    color: white;
     border-radius: 10px;
+    width: 240px;
+    height: 180px;
 }
 
 .admintable {
-    display: flex;
+    margin-top: 20px;
+    border-collapse: collapse;
+    width: 80%;
     margin: auto;
-    justify-content: center;
-    width: fit-content;
-    background: ghostwhite;
 }
 
-.admintable td {
-    padding: 15px;
+.admintable th, .admintable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
 }
 
-#title {
-    display: flex;
-    justify-content: center;
-    margin: auto;
-    margin-top: 3%;
-    font-size: 50px;
-}
-
-.welcome-message {
-    display: flex;
-    justify-content: center;
-    font-size: 25px;
-}
-
-.contact-submissions{
-    width: 60%;
-    margin: auto;
-    justify-content: center;
-    margin-top: 5%;
-    margin-bottom: 5%;
-}
-
-.contact-submissions table td{
-    padding: 15px;
-}
-
-.contact-submissions table{
-    background: ghostwhite;
+.admintable a {
+    text-decoration: none;
     color: black;
+}
+
+.admintable th {
+    background-color: #333;
+    color: white;
+}
+
+.contact-submissions {
+    margin: 40px 0px;
+}
+
+.contact-submissions h2 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 1%;
+}
+
+.contact-submissions table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: auto;
+}
+
+.contact-submissions th, .contact-submissions td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.contact-submissions th {
+    background-color: #333;
+    color: white;
 }
