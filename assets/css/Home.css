@@ -300,6 +300,8 @@ main{
     text-align: left;
     margin-left: 0;
     align-content: left;
+    width: 50%;
+    overflow: hidden;
 }
 
 .heart h1{

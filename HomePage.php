@@ -5,6 +5,8 @@ if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
     header("Location: login.php");
     exit();
 }
+
+include("server/homepage_get_data.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +15,7 @@ if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/home.css">
+    <link rel="stylesheet" href="assets/css/Home.css">
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <title>Home</title>
@@ -66,7 +68,7 @@ if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
     <main>
         <div class="titlebutton">
             <div class="packages">
-                <p>The best things come in zero-waste packages.</p>
+                <p><?php echo $content['packages_content']; ?></p>
             </div>
             <a href="Shop.php#gift-sets-name"><button id="gift">Shop Gift Sets</button></a>
         </div>
@@ -74,36 +76,19 @@ if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
 
     <div class="container">
         <div class="products">
-            <div class="bar">
-                <img src="assets/images/tooth.jpg" alt="img" id="img1">
-                <h5>Toothpaste Bits</h5>
-                <p>FROM $8 / MONTH</p>
-                <a href="Shop.php#toothpaste"><button class="shop">Shop Now</button></a>
-            </div>
-            <div class="bar">
-                <img src="assets/images/balm.jpg" alt="img" id="img2">
-                <h5>Body balm</h5>
-                <p>FROM $7 / MONTH</p>
-                <a href="Shop.php#balm"><button class="shop">Shop Now</button></a>
-            </div>
-            <div class="bar">
-                <img src="assets/images/bar.jpg" alt="img" id="img3">
-                <h5>Cleansing Bar</h5>
-                <p>FROM $3 / MONTH</p>
-                <a href="Shop.php#balm"><button class="shop">Shop Now</button></a>
-            </div>
-            <div class="bar">
-                <img src="assets/images/deo.jpg" alt="img" id="img4">
-                <h5>Deodorant</h5>
-                <p>FROM $8 / MONTH</p>
-                <a href="Shop.php#balm"><button class="shop">Shop Now</button></a>
-            </div>
-            <div class="bar">
-                <img src="assets/images/gel.jpg" alt="img" id="img5">
-                <h5>Whitening Gel</h5>
-                <p>FROM $5 / MONTH</p>
-                <a href="Shop.php#toothpaste"><button class="shop">Shop Now</button></a>
-            </div>
+            <?php
+            for ($i = 1; $i <= $content['num_products']; $i++) {
+                $productTitle = $content["product{$i}_title"];
+                $productPrice = $content["product{$i}_price"];
+                $productImage = $content["product{$i}_image"];
+            ?>
+                <div class="bar">
+                    <img src="<?php echo $productImage; ?>" alt="img" id="img<?php echo $i; ?>">
+                    <h5><?php echo $productTitle; ?></h5>
+                    <p><?php echo $productPrice; ?></p>
+                    <a href="Shop.php#product<?php echo $i; ?>"><button class="shop">Shop Now</button></a>
+                </div>
+            <?php } ?>
         </div>
     </div>
 
@@ -144,12 +129,10 @@ if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
         </div>
 
         <div class="heart">
-            <h1>At the heart of Bite,</h1>
-            <p>we want to do better. That means asking ourselves <br>every day, ‟How we can improve?” Whether it’s <br>
-                mindlessly tossing out an empty toothpaste tube or<br> glossing over the ingredients list, small daily
-                actions<br> can shape the future of our planet. When we are<br> better to ourselves and the earth, we
-                are one step <br>closer to a healthier and plastic-free world.</p>
-        </div>
+        <h1><?php echo $content['heart_title']; ?></h1>
+        <p><?php echo $content['heart_content']; ?></p>
+    </div>
+</div>
     </div>
     <div class="tablets">
         <h1>About our tablets</h1>

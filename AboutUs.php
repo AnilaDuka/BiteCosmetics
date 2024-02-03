@@ -5,6 +5,8 @@ if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
     header("Location: login.php");
     exit();
 }
+
+include('server/aboutus_get_data.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -75,120 +77,82 @@ if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
     </div>
 
     <section id="ingredients">
-        <div class="first-ing">
-            <div class="list">
-                <div class="x-text">
-                    <h4>Xylitol</h4>
-                    <p>Repels cavity-causing bacteria and is naturally sweet.</p>
-                </div>
-                <div class="x-pic">
-                    <img src="assets/images/xylitol.jpg" alt="image">
-                </div>
-            </div>
+    <div class="first-ing">
+        <?php
+        $ingredients = getIngredients($conn);
 
-            <div class="list">
-                <div class="e-text">
-                    <h4>Erythritol</h4>
-                    <p>Prevents cavity-causing bacteria from making a home in your teeth.</p>
-                </div>
-                <div class="e-pic">
-                    <img src="assets/images/erythritol.jpg" alt="image">
-                </div>
-            </div>
-
-            <div class="list">
-                <div class="b-text">
-                    <h4>Natural Berry Flavor</h4>
-                    <p>Mildly sweet hints of berries, cherries, and Mandarin orange.</p>
-                </div>
-                <div class="b-pic">
-                    <img src="assets/images/mint.jpg" alt="image">
-                </div>
-            </div>
-        </div>
-
-        <div class="second-ing">
-            <div class="list">
-                <div class="c-text">
-                    <h4>Calcium Carbonate</h4>
-                    <p>Acts as a mild abrasive that helps clean and polish your teeth.</p>
-                </div>
-                <div class="c-pic">
-                    <img src="assets/images/dicalcium.jpg" alt="image">
-                </div>
-            </div>
-
-            <div class="list">
-                <div class="s-text">
-                    <h4>Sodium Cocoyl Glutamate</h4>
-                    <p>This helps your bites foam up and clean your teeth.</p>
-                </div>
-                <div class="s-pic">
-                    <img src="assets/images/odium.jpg" alt="image">
-                </div>
-            </div>
-
-            <div class="list">
-                <div class="sb-text">
-                    <h4>Sodium Bicarbonate</h4>
-                    <p>This helps your bites foam up and clean your teeth.</p>
-                </div>
-                <div class="sb-pic">
-                    <img src="assets/images/sodium.jpg" alt="image">
-                </div>
-            </div>
-        </div>
-
-        <div class="third-ing">
-            <div class="list">
-                <div class="gg-text">
-                    <h4>Guar Gum</h4>
-                    <p>Made from legumes, this<br> helps keep our Bits together.</p>
-                </div>
-                <div class="gg-pic">
-                    <img src="assets/images/kaolin.jpg" alt="image" id="img-gg">
-                </div>
-            </div>
-
-            <div class="list">
-                <div class="nh-text">
-                    <h4>Nano-Hydroxyapatite</h4>
-                    <p>Helps fight sensitivity and remineralizes your tooth's enamel.</p>
-                </div>
-                <div class="nh-pic">
-                    <img src="assets/images/nhap.jpg" alt="image" id="img-nh">
-                </div>
-            </div>
-        </div>
-    </section>
+        foreach ($ingredients as $ingredient) {
+            if ($ingredient['category'] == 'first-ing') {
+                echo '<div class="list">';
+                echo '<div class="x-text">';
+                echo '<h4>' . $ingredient['title'] . '</h4>';
+                echo '<p>' . $ingredient['text'] . '</p>';
+                echo '</div>';
+                echo '<div class="x-pic">';
+                echo '<img src="' . $ingredient['image'] . '" alt="image">';
+                echo '</div>';
+                echo '</div>';
+            }
+        }
+        ?>
+    </div>
+    <div class="second-ing">
+        <?php
+        foreach ($ingredients as $ingredient) {
+            if ($ingredient['category'] == 'second-ing') {
+                echo '<div class="list">';
+                echo '<div class="c-text">';
+                echo '<h4>' . $ingredient['title'] . '</h4>';
+                echo '<p>' . $ingredient['text'] . '</p>';
+                echo '</div>';
+                echo '<div class="c-pic">';
+                echo '<img src="' . $ingredient['image'] . '" alt="image">';
+                echo '</div>';
+                echo '</div>';
+            }
+        }
+        ?>
+    </div>
+    <div class="third-ing">
+        <?php
+        foreach ($ingredients as $ingredient) {
+            if ($ingredient['category'] == 'third-ing') {
+                echo '<div class="list">';
+                echo '<div class="gg-text">';
+                echo '<h4>' . $ingredient['title'] . '</h4>';
+                echo '<p>' . $ingredient['text'] . '</p>';
+                echo '</div>';
+                echo '<div class="gg-pic">';
+                echo '<img src="' . $ingredient['image'] . '" alt="image" id="img-gg">';
+                echo '</div>';
+                echo '</div>';
+            }
+        }
+        ?>
+    </div>
+</section>
 
     <div class="container">
         <div class="defense">
-            <h1>In defense of our bodies and our planet.</h1>
+            <h1><?php echo getAboutUsContent($conn)['defense_title']; ?></h1>
         </div>
         <div class="earth">
             <div class="earth-txt">
-                <h1>Because it’s the earth.</h1>
-                <p>We believe the earth is not ours to keep, but to protect for future generations. We believe that
-                    animals are not ours to test on or to use as ingredients. By using only recyclable, biodegradable or
-                    compostable materials, we’re able not to add to our already overflowing landfills and polluted
-                    oceans — and we’re able to replace products that would otherwise end up there.</p>
+                <h1><?php echo getAboutUsContent($conn)['earth_title']; ?></h1>
+                <p><?php echo getAboutUsContent($conn)['earth_text']; ?></p>
             </div>
             <div class="earth-pic">
-                <img src="assets/images/bite.jpg" alt="image">
+                <img src="<?php echo getAboutUsContent($conn)['earth_image']; ?>" alt="image">
             </div>
         </div>
 
         <div class="smiles">
             <div class="smiles-pic">
-                <img src="assets/images/lab.jpg" alt="image">
+                <img src="<?php echo getAboutUsContent($conn)['smiles_image']; ?>" alt="image">
             </div>
             <div class="smiles-txt">
-                <h1>Cleaner smiles.</h1>
-                <p>When’s the last time you read the label on your toothpaste? Cheap fillers, harsh chemicals, and
-                    artificial dyes and flavors have no place in our daily routines. So we took out the bad and left
-                    only the good, and then pressed it all into our small but mighty Bits! Because something you do
-                    twice a day, every day, should be made with ingredients that are good for you.</p>
+                <h1><?php echo getAboutUsContent($conn)['smiles_title']; ?></h1>
+                <p><?php echo getAboutUsContent($conn)['smiles_text']; ?></p>
             </div>
         </div>
     </div>
