@@ -160,103 +160,6 @@ a{
     color: blue;
 }
 
-/*footer*/
-
-footer{
-    background-color: ghostwhite;
-    padding: 70px 0;
-}
-
-.footer-container{
-    width: 80%;
-    height: 350px;
-    margin: auto;
-}
-
-.footer-col ul{
-    list-style: none;
-    text-decoration: none;
-}
-
-.row{
-    display: flex;
-    flex-wrap: wrap;
-} 
-
-footer li a{
-    text-decoration: none;
-    color: black;
-}
-
-.footer-col{
-    width: 20%;
-    padding: 0 15px;
-}
-
-footer h3{
-    padding-bottom: 40px;
-    font-size: 20px;
-}
-
-.footer-col .socials a{
-    display: inline-block;
-    height: 50px;
-    width: 50px;
-    color: black;
-    padding: 0;
-}
-
-.footer-col ul li a{
-    font-size: 18px;
-    transition: 0.3s;
-}
-
-.footer-col ul li a:hover{
-    padding-left: 10px;
-}
-
-hr{
-    width: 80%;
-    margin: auto;
-}
-
-#hr1{
-    margin-bottom: 25px;
-}
-
-.privacy{
-    display: flex;
-    width: 80%;
-    margin: auto;
-    justify-content: space-between;
-}
-
-
-.footer-col img{
-    width: 60px;
-    padding-right: 20px;
-}
-
-.fo-pic{
-    width: 300px;
-    margin-left: 350px;
-}
-
-@media screen and (min-width: 1100px) and (max-width: 1400px) {
-    .navbar {
-        width: 35%;
-    }
-
-    /*------footer----*/
-    
-    .fo-pic {
-        margin-left: 0%;
-    }
-
-    .footer-col {
-        width: 25%;
-    }
-}
 
 @media screen and (min-width: 600px) and (max-width: 1100px) {
 
@@ -353,24 +256,6 @@ hr{
     .logobite {
         width: 100%;
     }
-        /*-----footer------*/
-
-        .footer-col {
-            width: 30%;
-        }
-    
-        .socials {
-            display: flex;
-            flex-direction: column;
-        }
-    
-        .fo-pic {
-            display: flex;
-            margin: 0px;
-            gap: 5%;
-        }
-
-        /*----------page---------*/
 }
 
 @media only screen and (max-width: 600px) {
@@ -385,22 +270,6 @@ hr{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    }
-
-    .menu {
-    display: block;
-    }
-    
-    nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin-top: 1em;
-    }
-
-    #home ul {
-        width: auto;
-        display: flex;
-        flex-direction: column;
     }
 
     header svg {
@@ -418,35 +287,9 @@ hr{
     transform: translateX(180%);
     }
 
-    nav li, h2 {
-        margin-top: 0px;
-    }
-
-    nav ul {
-    text-align: center;
-    color: black;
-    padding: .75em 2em;
-    display: block;
-    }
-
-    nav li {
-        margin: 20px;
-    }
-
-    .close {
-    margin: 0 auto;
-    display: block;
-    width: 2.5em;
-    }
-
     h2 {
         text-align: center;
         width: auto;
-    }
-
-    .open-nav {
-    background-color: white;
-    transform: translateX(0);
     }
 
     #log {
@@ -459,100 +302,10 @@ hr{
         overflow-x: hidden;
     }
 
-    .burger{
-        display: flex;
-        gap: 5%;
-        align-items: center;
-    }
 
     .logobite {
         width: 100%;
     }
-
-        /*------footer-------*/
-
-        footer {
-            margin: 0;
-            padding: 0;
-            display: block;
-            height: fit-content;
-        }
-        
-        .footer-container{
-            width: 100%;
-            height: fit-content;
-        }
-        
-        .footer-col{
-            font-size: 8px;
-        }
-        
-        .footer-col ul li a{
-            font-size: 13px;
-        }
-        
-        .privacy{
-            display: block;
-        }
-        
-        
-        hr{
-            margin-left: 40px;
-            width: 80%;
-        }
-        
-        footer h3{
-            padding-bottom: 15px;
-        }
-        
-        .row{
-            margin-left: 0px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-        
-        .footer-col{
-            margin-bottom: 0;
-            padding-bottom: 0;
-            height: fit-content;
-            width: 90%;
-            /* width: fit-content; */
-        }
-        
-        .socials {
-            display: flex;
-            justify-content: center;
-        }
-        
-        .socials img {
-            width: 20%;
-        }
-        .fo-pic {
-            width: 90%;
-            display: flex;
-            justify-content: center;
-            margin: 0px;
-            gap: 15%;
-            margin-bottom: 5%;
-        }
-        
-        .fa-brands{
-            font-size: 13px;
-        }
-        
-        .fo-pic img {
-            width: 17%;
-            padding: 0px;
-        }
-        
-        
-        .email p{
-            display: none;
-        }
-       /* ------------------------ */
 
        .content-box {
         width: 100%;
